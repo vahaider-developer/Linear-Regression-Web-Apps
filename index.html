@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Regression Models UI</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f4f9; }
+        .container { display: flex; gap: 40px; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 100%; }
+        input[type="text"] { width: 100%; padding: 8px; margin: 8px 0; box-sizing: border-box; }
+        button { background-color: #4CAF50; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+        h3 { color: #333; }
+    </style>
+</head>
+<body>
+    <h2>Linear Regression Dual Predictor</h2>
+    
+    <div class="container">
+        <!-- Car Form -->
+        <div class="card">
+            <h3>Car Price Predictor</h3>
+            <form action="/predict_car" method="post">
+                <label>Manufacturing Year:</label>
+                <input type="text" name="year" required>
+                <label>Kilometers Driven:</label>
+                <input type="text" name="km_driven" required>
+                <button type="submit">Predict Price</button>
+            </form>
+            {% if result_car %}
+                <h4 style="color: green;">Result: {{ result_car }}</h4>
+            {% endif %}
+        </div>
+
+        <!-- Energy Form -->
+        <div class="card">
+            <h3>Energy Consumption Predictor</h3>
+            <form action="/predict_energy" method="post">
+                <label>Square Footage:</label>
+                <input type="text" name="sq_ft" required>
+                <label>Number of Occupants:</label>
+                <input type="text" name="occupants" required>
+                <label>Appliances Used:</label>
+                <input type="text" name="appliances" required>
+                <button type="submit">Predict Energy</button>
+            </form>
+            {% if result_energy %}
+                <h4 style="color: blue;">Result: {{ result_energy }}</h4>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
